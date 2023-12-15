@@ -1,0 +1,208 @@
+#root {
+  background-image: url("/src/assets/images/villa-4555824_1280.jpg");
+  background-repeat: round;
+  background-size: auto;
+  height: 100dvh;
+  opacity: 85%;
+}
+
+/* gallery */
+.gallery {
+  width: 80%;
+  padding-left: 20%;
+}
+
+.gallery-container {
+  max-width: 62%;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 80%;
+  height: auto;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-controls button {
+  margin-left: 10px;
+}
+
+.zoom-controls {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  right: 20px;
+  transition: right 0.3s ease;
+}
+
+/*login */
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.h1_login {
+  color: white;
+  text-shadow: 2px 2px 8px chartreuse;
+  text-decoration: underline;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button_submit {
+  border-color: chartreuse;
+  border-radius: 5px 5px 5px 5px;
+  background-color: chartreuse;
+  color: black;
+  border-style: hidden;
+}
+
+/* OurZimers */
+.our_zimers {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 5px 8px chartreuse;
+}
+
+.h1_our_zimers {
+  color: white;
+  text-shadow: 2px 2px 8px chartreuse;
+  text-decoration: underline;
+}
+
+.units_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Four equal columns */
+  gap: 5px;
+  /* Adjust the gap between grid items */
+}
+
+.unit_item {
+  background-color: grey;
+  opacity: 85%;
+  border: 1px solid grey;
+  padding: 10px;
+  text-align: center;
+}
+
+.unit_item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* */
+
+.header {
+  text-shadow: 2px 3px 10px white;
+  text-align: center;
+  color: chartreuse;
+  font-size: xx-large;
+}
+
+.menu_btn {
+  font-size: xx-large;
+  margin-left: 2%;
+  padding: 20px auto;
+  text-shadow: 2px 5px 8px chartreuse;
+  background: none;
+  border-style: hidden;
+  color: white;
+  margin-top: 20px;
+}
+
+.nav {
+  font-size: xx-large;
+  display: flex;
+  color: white;
+  background: local;
+}
+
+.btn_ul {
+  padding-top: 5dvh;
+  margin: auto;
+  background: none;
+  color: whitesmoke;
+  border-style: none;
+  font-size: xx-large;
+  text-shadow: 2px 5px 8px chartreuse;
+}
+
+/* contact */
+.contact {
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 8px chartreuse;
+  text-decoration: underline;
+}
+
+/* RateUs  */
+.rate-us {
+  text-align: center;
+  margin: 20px;
+  color: white;
+  text-shadow: 2px 2px 8px chartreuse;
+  text-decoration: underline;
+}
+
+.rating-stars {
+  font-size: 24px;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star.selected {
+  color: gold;
+}
+
+.rate-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: progress;
+}
+
+
+/* .footer {
+  
+} */
