@@ -1,9 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import "./login.css";
-import Nav from "../navbar/Nav";
-import HomePage from "../home_page/HomePage";
 import { useNavigate } from "react-router-dom";
+import { BoxArrowInRight, Person } from "react-bootstrap-icons";
 
 const LogIn = () => {
   const [username, setUserName] = useState("");
@@ -63,6 +62,7 @@ const LogIn = () => {
     <div className="login-container">
       <div className="loginInput-container">
         <div className="input-con">
+          <Person fill="white" width={"30px"} height={"30px"} />
           <label>User Name :</label>
           <input
             type="email"
@@ -75,6 +75,7 @@ const LogIn = () => {
           />
         </div>
         <div className="input-con">
+          <BoxArrowInRight fill="white" width={"30px"} height={"30px"} />
           <label>Password :</label>
           <input
             type="password"

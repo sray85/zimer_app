@@ -3,7 +3,6 @@ import OurZimers from "../our_zimmer/OurZimers";
 import Gallery from "../gallery/Gallery";
 import Contact from "../contact_us/Contact";
 import RateUs from "../rate_us/RateUs";
-import Router from "../router/router";
 import { useNavigate } from "react-router-dom";
 // import SignUp from "../signup/signup";
 // import LogIn from "../login/login";

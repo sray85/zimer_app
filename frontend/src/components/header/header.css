@@ -1,6 +1,37 @@
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.header-container h3 {
+    color: turquoise;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: cursive;
+    text-align: center;
+    padding: 20px;
 }
 
+.navbar-con .house-con {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    color: rgb(64, 197, 224);
+}
+
+.navbar-con .collapse-btn-con {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.collapse-btn-con .nav-btn {
+    padding-top: 5dvh;
+    margin: auto;
+    background: none;
+    border-style: none;
+    font-size: x-large;
+    color: whitesmoke;
+}
+
+.nav-btn:hover {
+    color: turquoise;
+    scale: 1.2;
+    rotate: 20deg;
+}

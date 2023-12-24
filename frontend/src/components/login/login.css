@@ -2,30 +2,28 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: fit-content;
+  padding: 30px 50px;
+  border-radius: 10px;
+  margin-top: 5px;
   position: absolute;
-  top: 40%;
-  left: 35%;
+  top: 35%;
+  left: 38%;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 .loginInput-container .input-con {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px;
+  margin-top: 5px;
 }
 
 .loginInput-container .input-con label {
   font-weight: bolder;
+  color: whitesmoke;
   font-size: large;
-  color: black
 }
 
 .loginInput-container .input-con input {
-  padding: 10px;
+  padding: 7px;
 }
 
 .login-container .login-buttons-container {
@@ -38,16 +36,15 @@
 }
 
 .login-buttons-container .button {
-  width: 120px;
+  width: 100px;
   height: 40px;
   font-weight: bold;
-  width: 80px;
   font-weight: bold;
   border-radius: 20px;
-  background-color: chartreuse
+  background-color: turquoise;
 }
 
 .login-buttons-container .button:hover {
-  background-color: rgb(141, 227, 138);
+  background-color: rgb(31, 208, 217);
   color: black;
 }
