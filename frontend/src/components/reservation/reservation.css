@@ -1,0 +1,118 @@
+.resevation-con .resevatioHeader-con {
+    padding: 13px;
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid white;
+    font-weight: 800;
+    font-size: large;
+    font-family: cursive;
+    text-align: center;
+}
+
+.resevation-con .footer-con {
+    padding: 13px;
+    background-color: black;
+    color: white;
+    font-weight: 800;
+    font-size: large;
+    font-family: cursive;
+    text-align: center;
+}
+
+.resevatioHeader-con .btn-con {
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+}
+
+.return-con {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.resevation-con .card-header-con,
+.card-footer-con {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.resevation-con .card-body-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resevation-con .card-img-con {
+    display: flex;
+    justify-content: space-between;
+    width: 242px;
+    height: 242px;
+}
+
+.resevation-con .card-text-con p {
+    margin-left: 20px;
+    column-count: 2;
+    column-gap: 10px;
+}
+
+.resevation-con .card-body-con {
+    background-color: whitesmoke;
+    color: black;
+}
+
+.card-footer-con {
+    border-bottom: 3px solid white;
+}
+
+
+.imgs-con {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imgs-con img {
+    width: 240px;
+    height: 200px;
+}
+
+.resevation-con .order-con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.order-header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 3px solid white;
+}
+
+.startDay-con input {
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.endDay-con input {
+    padding: 5px;
+    margin-left: 20px;
+}
+
+.resevation-con .sendOrder-con {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-group Button {
+    padding: 10px;
+    color: white;
+    background-color: black;
+    border: none;
+}

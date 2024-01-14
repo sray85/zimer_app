@@ -4,6 +4,7 @@ class mongoosDB {
   static async Connect() {
     const url =
       "mongodb+srv://zimmer:12345@cluster0.j4rzuam.mongodb.net/zimmer";
+
     await mongoose
       .connect(url)
       .then(() => {

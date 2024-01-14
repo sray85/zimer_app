@@ -3,22 +3,22 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: absolute;
-  left: 40%;
-  top: 30%;
-  padding: 10px 50px;
+  width: fit-content;
+  padding: 20px 50px;
   border-radius: 10px;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 .signinInput-container .input-con input {
-  padding: 7px;
+  padding: 5px;
+  text-align: center;
+  border: 2px solid rgba(3, 102, 214, 0.3)
 }
 
 .signinInput-container .input-con label {
   font-weight: bolder;
-  color: whitesmoke;
-  font-size: large;
+  color: black;
+  font-size: medium;
   margin-top: 5px;
 }
 

@@ -1,55 +1,139 @@
-import React from 'react';
+import { Button, ButtonGroup, Card } from "react-bootstrap";
+import "./OurZimmers.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { addZimerData } from "../redux/zimmerData";
+import { useNavigate } from "react-router-dom";
+import { CurrencyDollar } from "react-bootstrap-icons";
+import Loader from "../loader/loader";
 
-const OurZimers = ({ activePage }) => {
-  // Sample B&B units data (replace with your actual data)
-  const bnbUnits = [
-    { 
-      id: 1, 
-      name: 'Family Unit #1',  
-      image: 'https://www.afristay.com/media/thumbnails/pictures/places/257/91190.jpg.1366x768_q85_crop_upscale.jpg', 
-      description: 'Family unit included 2 bedrooms, one living room, full kitchen, jacuzzi, swimming pool, and two shower rooms.' 
-    },
-    { 
-      id: 2, 
-      name: 'Family Unit #2', 
-      image: 'https://media.istockphoto.com/id/1148629418/photo/home-or-house-building-exterior-and-interior-design-showing-tropical-pool-villa-with-green.jpg?s=612x612&w=0&k=20&c=LwIGTtfR5Ce1g0K5Oau0OtA75u5LCSotGF-PQbNS17E=', 
-      description: 'Family unit included 2 bedrooms, one living room, full kitchen, jacuzzi, swimming pool, and two shower rooms.' 
-    },
-    { 
-      id: 3, 
-      name: 'B&B Unit 3', 
-      image: 'https://media.istockphoto.com/id/509553708/photo/tropical-modern-villa-exterior.jpg?s=612x612&w=0&k=20&c=rMmOmihiXHl6htuhYVzbfPdKAawYHFuNMhD32A0sWUg=', 
-      description: '' 
-    },
-    { 
-      id: 4, 
-      name: 'B&B Unit 4', 
-      image: 'https://media.istockphoto.com/id/1281220530/photo/woman-tourist-relaxing-near-luxury-swimming-pool-in-hotel.jpg?s=1024x1024&w=is&k=20&c=OC0KixHV9We8w5BIV9wehvXhfXezJ8Z7dfbj-BS9mHI=', 
-      description: '' 
-    },
-    // Add more units as needed
-  ];
+const OurZimers = () => {
+  const [zimmerunit, setZimmerUnit] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [isLoader, setIsLoader] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const role = useSelector((state) => state.AllReducers.userdata.userdata.role);
+
+  const SearchInput = useSelector(
+    (state) => state.AllReducers.searchTo.searchInput
+  );
+
+  // const FilterData = zimmerunit.filter((item) => {
+  //   return (
+  //     item.name.toLowerCase().includes(SearchInput.toLowerCase()) ||
+  //     item.description.toLowerCase().includes(SearchInput.toLowerCase()) 
+  //   );
+  // });
+
+  //-------------------------------Display Zimmer's List Function -----------------------//
+
+  useEffect(() => {
+    const fetching = async () => {
+      setIsLoader(true);
+      await fetch("http://localhost:5000/zimmer/zimmerlist")
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoader(false);
+          if (data.download) {
+            dispatch(addZimerData(data.zimmerdata));
+          }
+          setZimmerUnit(data.zimmerdata);
+        })
+        .catch((err) => console.log(err));
+    };
+    fetching();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refresh]);
+
+  //-------------------------------------Delete Zimmer Function -------------------------//
+
+  const DeleteZimmer = (id) => {
+    const PostTodata = {
+      method: "POST",
+      headers: {
+        "Access-Control": "Allow-Origin",
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    };
+
+    const fetching = async () => {
+      setIsLoader(true);
+      await fetch("http://localhost:5000/zimmer/deletezimmer", PostTodata)
+        .then((response) => response.json())
+        .then((data) => {
+          setIsLoader(false);
+          console.log(data);
+          if (data.messsge) {
+            setRefresh(!refresh);
+          }
+        })
+        .catch((err) => console.log(err));
+    };
+    fetching();
+  };
+
+  const editZimmer = (zimmerunit) => {
+    navigate("/editzimmer", { state: zimmerunit });
+  };
+
+  const Reservation = (zimmerunit) => {
+    navigate("/reservezimmer", { state: zimmerunit });
+  };
 
   return (
     <div>
-      <h1 className='h1_our_zimers'>OurZimers</h1>
-
-      {bnbUnits.length >= 4 ? (
-        <div>
-          <h2>Available B&B Units:</h2>
-          <div className='units_grid'>
-            {bnbUnits.slice(0, 4).map((unit) => (
-              <div key={unit.id} className='unit_item'>
-                <strong>{unit.name}</strong>
-                {unit.image && <img src={unit.image} alt={unit.name} />}
-                <p>{unit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <p>No B&B units available.</p>
-      )}
+      {isLoader ? <Loader /> : ""}
+      <div className="grid-container">
+        {zimmerunit.map((unit, index) => {
+          return (
+            <div key={unit._id}>
+              <Card className="grid-item">
+                <Card.Header>
+                  <Card.Title>{unit.name}</Card.Title>
+                </Card.Header>
+                <Card.Img alt="zimmer img" src={unit.img} />
+                <Card.Body>
+                  <Card.Text>{unit.description}</Card.Text>
+                  <Card.Text>
+                    Price: {unit.price} <CurrencyDollar /> per night
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                  {role === "user" ? (
+                    <Button
+                      className="btn-dark"
+                      onClick={() => Reservation(unit)}
+                    >
+                      Order
+                    </Button>
+                  ) : role === "admin" ? (
+                    <ButtonGroup>
+                      <Button
+                        className="btn-dark"
+                        onClick={() => editZimmer(unit)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        className="btn-dark"
+                        onClick={() => DeleteZimmer(unit._id)}
+                      >
+                        Delete
+                      </Button>
+                    </ButtonGroup>
+                  ) : (
+                    ""
+                  )}
+                </Card.Footer>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,46 @@
+.mainPageHeader-con {
+    border: 1px solid rgba(3, 102, 214, 0.3);
+    background-color: rgba(3, 154, 214, 0.3);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.mainPageHeader-con .name-container h4 {
+    font-family: cursive;
+    font-weight: bold;
+    color: white
+}
+
+.mainPageHeader-con .search-con input {
+    padding: 10px;
+    border: solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.mainPageHeader-con .search-input-con {
+    text-align: center;
+}
+
+.mainPageHeader-con .btn-primary {
+    padding: 13px 30px;
+}
+
+label {
+    font-family: cursive;
+}
+
+Search:hover {
+    cursor: pointer;
+}
+
+.btn-dark {
+    background-color: rgba(3, 154, 214, 0.3);
+    border: none
+}

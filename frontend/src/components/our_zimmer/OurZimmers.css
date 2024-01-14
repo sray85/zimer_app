@@ -1,0 +1,34 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.grid-container .grid-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    background: none;
+    border-radius: 20px;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    background-color: rgba(3, 154, 214, 0.3);
+    color: whitesmoke;
+    width: 400px;
+    height: 500px;
+}
+
+.grid-item .card-img {
+    height: 170px;
+    width: 250px;
+    border-radius: 20px;
+
+}
+
+.card-body .card-text {
+    font-size: large;
+    font-weight: 600;
+}

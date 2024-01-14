@@ -1,16 +1,23 @@
 .header-container h3 {
     color: turquoise;
-    font-size: xx-large;
     font-weight: bold;
     font-family: cursive;
+    font-size: 3vw;
     text-align: center;
-    padding: 20px;
+    padding-top: 5rem;
+}
+
+#our_zimers,
+#contact,
+#signup,
+#login {
+    color: turquoise;
 }
 
 .navbar-con .house-con {
     position: absolute;
-    top: 15px;
-    right: 30px;
+    right: 8%;
+    top: 15%;
     width: 60px;
     height: 60px;
     color: rgb(64, 197, 224);
@@ -27,11 +34,11 @@
     background: none;
     border-style: none;
     font-size: x-large;
-    color: whitesmoke;
+    color: black;
+    font-weight: 700;
 }
 
 .nav-btn:hover {
     color: turquoise;
     scale: 1.2;
-    rotate: 20deg;
 }

@@ -8,14 +8,15 @@ function userSignUp(req, res) {
   const userdata = req.body;
   const userSignUpData = signupSchema;
 
-  let mail = userdata.mail;
-  let passWrd = userdata.password;
+  const mail = userdata.mail;
+  const passWrd = userdata.password;
 
-  let email = crypto
+  const email = crypto
     .createHash("sha256")
     .update(process.env.KEY + mail)
     .digest("hex");
-  let password = crypto
+
+  const password = crypto
     .createHash("sha256")
     .update(process.env.KEY + passWrd)
     .digest("hex");
@@ -25,20 +26,29 @@ function userSignUp(req, res) {
     lastname: userdata.lname,
     email: email,
     password: password,
+    phonenumber: userdata.phonenumber,
   };
-  userSignUpData
-    .insertMany(userDataObj)
-    .then((result) => {
-      if (result) {
-        console.log("user signup done ");
-        res.json({
-          message: "user signup done ",
-          signup_status: true,
-          userdata: result,
-        });
-      }
-    })
-    .catch((error) => console.log(error));
+
+  userSignUpData.findOne({ email }).then((result) => {
+    if (result) {
+      console.log("user is already exsits");
+      res.json({ message: "user is already exsits" });
+    } else {
+      userSignUpData
+        .insertMany(userDataObj)
+        .then((result) => {
+          if (result) {
+            console.log("user signup done ");
+            res.json({
+              message: "user signup done ",
+              signup_status: true,
+              userdata: result,
+            });
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  });
 }
 
 export default { userSignUp };

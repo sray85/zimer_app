@@ -3,12 +3,17 @@ import React from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import { BoxArrowInRight, Person } from "react-bootstrap-icons";
+import { adduser } from "../redux/userData";
+import { useDispatch } from "react-redux";
+import Loader from "./../loader/loader";
 
 const LogIn = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loginerror, setLoginError] = useState("");
+  const [isLoder, setIsLoader] = useState(false);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const LoginTo = () => {
@@ -35,11 +40,14 @@ const LogIn = () => {
             body: JSON.stringify(loginData),
           };
           const fetching = async () => {
+            setIsLoader(true);
             await fetch("http://localhost:5000/login", Postdata)
               .then((response) => response.json())
               .then((data) => {
+                setIsLoader(false);
                 if (data.login_status) {
-                  navigate("/nav");
+                  dispatch(adduser(data.userdata));
+                  navigate("/mainpage");
                   ClearInputs();
                 } else {
                   setLoginError(data.message);
@@ -60,9 +68,10 @@ const LogIn = () => {
 
   return (
     <div className="login-container">
+      {isLoder ? <Loader /> : ""}
       <div className="loginInput-container">
         <div className="input-con">
-          <Person fill="white" width={"30px"} height={"30px"} />
+          <Person fill="black" width={"30px"} height={"30px"} />
           <label>User Name :</label>
           <input
             type="email"
@@ -75,7 +84,7 @@ const LogIn = () => {
           />
         </div>
         <div className="input-con">
-          <BoxArrowInRight fill="white" width={"30px"} height={"30px"} />
+          <BoxArrowInRight fill="black" width={"30px"} height={"30px"} />
           <label>Password :</label>
           <input
             type="password"

@@ -1,0 +1,52 @@
+.main-payment-container {
+  padding: 20px;
+}
+
+.inputs-container .inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.inputs-container .inputs input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.inputs-container label {
+  margin-right: 5px;
+  color: blue;
+  font-weight: 600;
+}
+
+.check-button-container {
+  text-align: center;
+  margin-top: 5px;
+  position: fixed;
+  top: 50%;
+  right: 15%;
+}
+
+.check-button-container .send-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(202, 147, 190, 0.495);
+  border: 2px solid white;
+  font-weight: bold;
+}
+
+.msg-container {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.btn-group button {
+  margin-top: 10px;
+}
+
+.pymnt-msg {
+  margin-top: 10px;
+}

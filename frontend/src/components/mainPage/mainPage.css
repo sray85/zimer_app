@@ -1,0 +1,17 @@
+.mainPage-con {
+    border: 2px solid rgba(3, 102, 214, 0.3);
+    border-radius: 20px;
+    border-style: double;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.ourZimmer-con {
+    background-image: url("/src/assets/images/villa-4555824_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+
+}

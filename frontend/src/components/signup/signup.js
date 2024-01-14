@@ -1,15 +1,21 @@
 import { useState } from "react";
 import "./signup.css";
 import React from "react";
+import Loader from "../loader/loader";
+
 
 const SignUp = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [phonenumber, setPhoneNumber] = useState(0);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [repassword, setRePassword] = useState("");
   const [passworerror, setPasswordError] = useState("");
   const [mailerror, setMailError] = useState("");
+  const [msg, setMsg] = useState("");
+  const [isLoader, setIsLoader] = useState(false);
+
 
   const SignUpValidation = () => {
     const emailRegex = new RegExp(
@@ -34,6 +40,7 @@ const SignUp = () => {
     const signupData = {
       fname,
       lname,
+      phonenumber,
       mail,
       password,
       repassword,
@@ -49,14 +56,21 @@ const SignUp = () => {
       body: JSON.stringify(signupData),
     };
     const fetching = async () => {
+      setIsLoader(true);
       await fetch("http://localhost:5000/signup", Postdata)
         .then((response) => response.json())
         .then((data) => {
+          setIsLoader(false);
           if (data.signup_status) {
             clearInputs();
+            setIsLoader(false);
+          } else {
+            setMsg(data.message);
           }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+        });
     };
     fetching();
   };
@@ -67,10 +81,13 @@ const SignUp = () => {
     setMail("");
     setPassword("");
     setRePassword("");
+    setPhoneNumber("");
+    setMsg("");
   };
 
   return (
     <div className="main-signup-container">
+      {isLoader ? <Loader /> : ""}
       <div className="signinInput-container">
         <div className="input-con">
           <label>First Name : </label>
@@ -80,7 +97,6 @@ const SignUp = () => {
             onChange={(f_name) => setFname(f_name.target.value)}
             className="form-control"
             placeholder="first name"
-            style={{ textAlign: "center" }}
           />
         </div>
         <div className="input-con">
@@ -91,18 +107,26 @@ const SignUp = () => {
             onChange={(l_name) => setLname(l_name.target.value)}
             className="form-control"
             placeholder="last name"
-            style={{ textAlign: "center" }}
+          />
+        </div>
+        <div className="input-con">
+          <label>Phone Number : </label>
+          <input
+            type="tel"
+            value={phonenumber}
+            onChange={(p_number) => setPhoneNumber(p_number.target.value)}
+            className="form-control"
+            placeholder="phone number"
           />
         </div>
         <div className="input-con">
           <label>Mail :</label>
           <input
-            type="text"
+            type="email"
             value={mail}
             onChange={(email) => setMail(email.target.value)}
             className="form-control"
             placeholder="mail address"
-            style={{ textAlign: "center" }}
           />
         </div>
         <div className="input-con">
@@ -113,7 +137,6 @@ const SignUp = () => {
             onChange={(passwrd) => setPassword(passwrd.target.value)}
             className="form-control"
             placeholder="at least 8 digits"
-            style={{ textAlign: "center" }}
           />
         </div>
         <div className="input-con">
@@ -124,7 +147,6 @@ const SignUp = () => {
             onChange={(rpasswrd) => setRePassword(rpasswrd.target.value)}
             className="form-control"
             placeholder="re-enter password"
-            style={{ textAlign: "center" }}
           />
         </div>
       </div>
@@ -136,6 +158,7 @@ const SignUp = () => {
       <div>
         <h5>{mailerror}</h5>
         <h5>{passworerror}</h5>
+        <h5>{msg}</h5>
       </div>
     </div>
   );
