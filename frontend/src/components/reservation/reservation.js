@@ -125,7 +125,7 @@ const Reservation = () => {
         )}
       </div>
       <footer className="footer-con">
-        All Right Reseved To Aiman's Zimmers
+        All Right Reseved To Zimmers
         <CCircle />
       </footer>
     </div>
