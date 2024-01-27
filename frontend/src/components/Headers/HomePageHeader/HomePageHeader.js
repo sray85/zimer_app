@@ -23,7 +23,7 @@ const HomePageHeader = () => {
 
   return (
     <div className="header-container">
-      <h3>Wellcom To Aiman's Zimmeres</h3>
+      <h3>Wellcom to Zimmers</h3>
       <div className="navbar-con">
         <MenuUp
           className="house-con"
