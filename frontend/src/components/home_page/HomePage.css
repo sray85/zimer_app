@@ -1,9 +1,9 @@
 .homepage-contanier {
   background-image: url("/src/assets/images/villa-4555824_1280.jpg");
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   background-clip: border-box;
-  min-height: 800px;
+  min-height: 700px;
 }
 
 

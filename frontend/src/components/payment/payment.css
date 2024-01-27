@@ -30,7 +30,7 @@
 }
 
 .card-front {
-  background-image: url("../../assets/images/integration1.png");
+  /* background-image: url("../../assets/images/integration1.png"); */
   background-position: center;
   background-repeat: none;
   background-size: cover;
