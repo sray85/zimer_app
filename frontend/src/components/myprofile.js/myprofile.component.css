@@ -1,0 +1,5 @@
+.main-profile-con .card .card-header,
+.main-profile-con .card .card-footer {
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(0, 140, 255), white);
+}

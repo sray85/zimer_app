@@ -7,7 +7,7 @@ import Contact from "./../contact_us/Contact";
 import { useSelector } from "react-redux";
 
 function DisplayNavBarOption() {
-  const [pagedisplay, setPageDisplay] = useState(null);
+  const [pagedisplay, setPageDisplay] = useState("");
 
   const btnSelction = useSelector(
     (state) => state.AllReducers.btnSelecttion.btnNavBar

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./HomePageHeader.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { HouseDownFill, MenuButtonWideFill } from "react-bootstrap-icons";
+import { MenuUp } from "react-bootstrap-icons";
 import { Collapse } from "react-bootstrap";
 import { addBtnSelction } from "../../redux/navbarOption";
 import { useDispatch } from "react-redux";
@@ -19,19 +19,19 @@ const HomePageHeader = () => {
     } else {
       dispatch(addBtnSelction(btnSelction));
     }
-  }, [btnSelction, dispatch, open]);
+  }, [btnSelction, open, dispatch]);
 
   return (
     <div className="header-container">
-      <h3>Wellcom To  Zimmeres</h3>
+      <h3>Wellcom To Aiman's Zimmeres</h3>
       <div className="navbar-con">
-        <MenuButtonWideFill
+        <MenuUp
           className="house-con"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
-        ></MenuButtonWideFill>
-        <Collapse in={open} className="collapse-btn-con">
-          <div>
+        ></MenuUp>
+        <Collapse in={open}>
+          <div className="collapse-btn-con">
             <button
               id="our_zimers"
               className="nav-btn"

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card } from "react-bootstrap";
+import { ButtonGroup, Card } from "react-bootstrap";
 import "./OurZimmers.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -11,21 +11,22 @@ const OurZimers = () => {
   const [zimmerunit, setZimmerUnit] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [isLoader, setIsLoader] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const role = useSelector((state) => state.AllReducers.userdata.userdata.role);
-
-  const SearchInput = useSelector(
+  const newSearch = useSelector(
     (state) => state.AllReducers.searchTo.searchInput
   );
 
-  // const FilterData = zimmerunit.filter((item) => {
-  //   return (
-  //     item.name.toLowerCase().includes(SearchInput.toLowerCase()) ||
-  //     item.description.toLowerCase().includes(SearchInput.toLowerCase()) 
-  //   );
-  // });
+  const FilterData = zimmerunit.filter((item) => {
+    return (
+      item.region.toLowerCase().includes(newSearch.toLowerCase()) ||
+      item.name.toLowerCase().includes(newSearch.toLowerCase()) ||
+      item.description.toLowerCase().includes(newSearch.toLowerCase())
+    );
+  });
 
   //-------------------------------Display Zimmer's List Function -----------------------//
 
@@ -88,7 +89,7 @@ const OurZimers = () => {
     <div>
       {isLoader ? <Loader /> : ""}
       <div className="grid-container">
-        {zimmerunit.map((unit, index) => {
+        {FilterData.map((unit) => {
           return (
             <div key={unit._id}>
               <Card className="grid-item">
@@ -101,29 +102,30 @@ const OurZimers = () => {
                   <Card.Text>
                     Price: {unit.price} <CurrencyDollar /> per night
                   </Card.Text>
+                  <Card.Text>Region: {unit.region}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
                   {role === "user" ? (
-                    <Button
-                      className="btn-dark"
+                    <button
+                      className="btn btn-info"
                       onClick={() => Reservation(unit)}
                     >
-                      Order
-                    </Button>
+                      Reserve
+                    </button>
                   ) : role === "admin" ? (
                     <ButtonGroup>
-                      <Button
-                        className="btn-dark"
+                      <button
+                        className="btn btn-outline-info"
                         onClick={() => editZimmer(unit)}
                       >
                         Edit
-                      </Button>
-                      <Button
-                        className="btn-dark"
+                      </button>
+                      <button
+                        className="btn btn-outline-info"
                         onClick={() => DeleteZimmer(unit._id)}
                       >
                         Delete
-                      </Button>
+                      </button>
                     </ButtonGroup>
                   ) : (
                     ""

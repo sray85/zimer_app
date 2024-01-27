@@ -6,6 +6,7 @@ import Loader from "../loader/loader";
 
 const AddZimmer = () => {
   const [name, setName] = useState("");
+  const [region, setRegion] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [img, setImg] = useState("");
@@ -15,7 +16,13 @@ const AddZimmer = () => {
   const nanigate = useNavigate();
 
   const AddZimmer = () => {
-    if (name === "" || description === "" || price === "" || img === "") {
+    if (
+      name === "" ||
+      description === "" ||
+      price === "" ||
+      img === "" ||
+      region === ""
+    ) {
       console.log("Some Zimmer Information Is Missing");
       setMsg("Some Zimmer Information Is Missing");
     } else {
@@ -24,6 +31,7 @@ const AddZimmer = () => {
         price,
         description,
         img,
+        region,
       };
       const PostTodata = {
         method: "POST",
@@ -60,6 +68,7 @@ const AddZimmer = () => {
     setImg("");
     setName("");
     setPrice("");
+    setRegion("");
   };
 
   return (
@@ -72,6 +81,14 @@ const AddZimmer = () => {
             type="text"
             onChange={(zn) => setName(zn.target.value)}
             value={name}
+          />
+        </div>
+        <div className="inputs-con">
+          <label>Zimmer Regio: </label>
+          <input
+            type="text"
+            onChange={(zn) => setRegion(zn.target.value)}
+            value={region}
           />
         </div>
         <div className="inputs-con">
@@ -101,12 +118,20 @@ const AddZimmer = () => {
         </div>
         <div className="button-container">
           <ButtonGroup>
-            <Button type="submit" onClick={AddZimmer}>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={AddZimmer}
+            >
               Send
-            </Button>
-            <Button type="submit" onClick={BackToMainPage}>
+            </button>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={BackToMainPage}
+            >
               Back
-            </Button>
+            </button>
           </ButtonGroup>
         </div>
         <div className="msg-con">

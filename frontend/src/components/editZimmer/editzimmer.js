@@ -101,12 +101,20 @@ const EditZimmer = () => {
         </div>
         <div className="button-container">
           <ButtonGroup>
-            <Button type="submit" onClick={editZimmerInfo}>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={editZimmerInfo}
+            >
               Send
-            </Button>
-            <Button type="submit" onClick={BackToMainPage}>
+            </button>
+            <button
+              type="submit"
+              className="btn btn-outline-info"
+              onClick={BackToMainPage}
+            >
               Back
-            </Button>
+            </button>
           </ButtonGroup>
         </div>
         <div className="msg-con">

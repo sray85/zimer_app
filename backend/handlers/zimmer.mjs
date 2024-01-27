@@ -100,6 +100,25 @@ function EditZimmer(req, res) {
     });
 }
 
+function DeleteZimmerResevation(req, res) {
+  console.log("posting from : Deleting Zimmer Resevation");
+  const zimmerResevation = req.body;
+  const orderResevation = resevationSchema;
+  const zimmerId = zimmerResevation.zimmerId;
+  const clientName = zimmerResevation.clientName;
+  const startDate = zimmerResevation.startDate;
+
+  orderResevation.findOneAndDelete(
+    { zimmerId },
+    {
+      $pull: {
+        zimmerUnitResevation: { clientName },
+        zimmerUnitResevation: { startDate },
+      },
+    }
+  );
+}
+
 function AddZimmerResevation(req, res) {
   console.log("posting from :Add Zimmer Resevation");
   const zimmerResevation = req.body;
@@ -108,9 +127,9 @@ function AddZimmerResevation(req, res) {
 
   const newResevation = {
     clientName: zimmerResevation.zimmerUnitResevation.clientName,
-    ClientId: zimmerResevation.zimmerUnitResevation.ClientId,
+    ClientId: zimmerResevation.zimmerUnitResevation.clientId,
     zimmerPrice: zimmerResevation.zimmerUnitResevation.zimmerPrice,
-    amount: zimmerResevation.zimmerUnitResevation.amount,
+    duration: zimmerResevation.zimmerUnitResevation.duration,
     startDate: zimmerResevation.zimmerUnitResevation.startDate,
     endDate: zimmerResevation.zimmerUnitResevation.endDate,
   };
@@ -155,23 +174,16 @@ function AddZimmerResevation(req, res) {
     });
 }
 
-function DeleteZimmerResevation(req, res) {
-  console.log("posting from : Deleting Zimmer Resevation");
-  const zimmerResevation = req.body;
-  const orderResevation = resevationSchema;
-  const zimmerId = zimmerResevation.zimmerId;
-  const clientName = zimmerResevation.clientName;
-  const startDate = zimmerResevation.startDate;
-
-  orderResevation.findOneAndDelete(
-    { zimmerId },
-    {
-      $pull: {
-        zimmerUnitResevation: { clientName },
-        zimmerUnitResevation: { startDate },
-      },
-    }
-  );
+function ZimmerResevations(req, res) {
+  console.log("get from : my resevation");
+  const userId = req.body.userId;
+  const clientresevation = resevationSchema;
+  clientresevation
+    .find()
+    .sort({ updatedAt: 1 })
+    .then((result) => {
+      res.json({ resevations: result });
+    });
 }
 
 export default {
@@ -181,4 +193,5 @@ export default {
   EditZimmer,
   AddZimmerResevation,
   DeleteZimmerResevation,
+  ZimmerResevations,
 };

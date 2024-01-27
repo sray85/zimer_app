@@ -1,9 +1,9 @@
-import mongoose from "mongoose";//שולף מידע המונגו
+import mongoose from "mongoose";
 
 class mongoosDB {
   static async Connect() {
     const url =
-      "mongodb+srv://zimmer:12345@cluster0.j4rzuam.mongodb.net/zimmer";//היוזר שלי במונגו
+      "mongodb+srv://zimmer:12345@cluster0.j4rzuam.mongodb.net/zimmer";
 
     await mongoose
       .connect(url)

@@ -45,12 +45,12 @@ const LogIn = () => {
               .then((response) => response.json())
               .then((data) => {
                 setIsLoader(false);
-                if (data.login_status) {
+                if (data.loginStatus) {
                   dispatch(adduser(data.userdata));
                   navigate("/mainpage");
                   ClearInputs();
                 } else {
-                  setLoginError(data.message);
+                  setLoginError(`${data.message} check user/password `);
                 }
               })
               .catch((error) => console.log(error));

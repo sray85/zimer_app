@@ -53,8 +53,11 @@
     margin-top: 20px;
 }
 
-.add-zimmer-con .add-zimmer-inputs .button-container .btn-primary {
-    padding: 15px 30px;
+.add-zimmer-con .add-zimmer-inputs .button-container .btn-outline-info {
+    padding: 10px 30px;
+    color: black;
+    font-weight: 600;
+    border: 1px solid black;
 }
 
 .add-zimmer-con .add-zimmer-inputs .msg-con {

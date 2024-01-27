@@ -4,22 +4,21 @@ const zimmerResevationSchema = new mongoose.Schema(
   {
     zimmerId: {
       type: String,
-      require: true,
+      required: true,
     },
 
     zimmerName: {
       type: String,
-      require: true,
+      required: true,
     },
 
     zimmerUnitResevation: {
       type: Array,
-      require: true,
-      default: null,
+      required: true,
+      default: [],
     },
   },
   { timestamps: true }
 );
 
 export default mongoose.model("zimmerResevation", zimmerResevationSchema);
-

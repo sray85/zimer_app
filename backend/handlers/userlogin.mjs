@@ -6,20 +6,15 @@ dotenv.config("../.env");
 function UserLogIn(req, res) {
   console.log("posting from user login");
   const logindata = req.body;
-  const mail = logindata.username;
+  const userLogInData = signupData;
+  const email = logindata.username;
   const passWrd = logindata.password;
-
-  const email = crypto
-    .createHash("sha256")
-    .update(process.env.KEY + mail)
-    .digest("hex");
 
   const password = crypto
     .createHash("sha256")
     .update(process.env.KEY + passWrd)
     .digest("hex");
 
-  const userLogInData = signupData;
   if (email === "" || password === "") {
     console.log("username/password is missing");
     res.json({ message: "username/password is missing", status: false });
@@ -27,28 +22,31 @@ function UserLogIn(req, res) {
     userLogInData
       .findOne({ email })
       .then((result) => {
-        if (result) {
-          userLogInData.findOne({ password }).then((result) => {
-            if (result) {
-              console.log(
-                "user name and password is correct , login status succsess"
-              );
-              res.json({
-                message: "user name and password is correct",
-                login_status: true,
-                userdata: result,
-              });
-            } else {
-              console.log("incorrect password");
-              res.json({ message: "inccorect password", login_Status: false });
-            }
-          });
+        if (!result) {
+          console.log("Invaleid User");
+          res.json({ message: "Invaleid User", loginStaus: false });
         } else {
-          console.log("incorrect user");
-          res.json({ message: "inccorect user", login_Status: false });
+          if (result.password !== password) {
+            console.log("Inalied Password");
+            res.json({
+              message: "User Login Failed",
+              loginStatus: false,
+              userdata: result,
+            });
+          } else {
+            console.log("User Login Succsess");
+            res.json({
+              message: "User Login Succsess",
+              loginStatus: true,
+              userdata: result,
+            });
+          }
         }
       })
-      .catch((Error) => console.log(Error));
+      .catch((err) => {
+        console.log(err);
+        res.json({ message: err });
+      });
   }
 }
 

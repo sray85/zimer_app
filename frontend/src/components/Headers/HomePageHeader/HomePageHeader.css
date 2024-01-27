@@ -7,12 +7,6 @@
     padding-top: 5rem;
 }
 
-#our_zimers,
-#contact,
-#signup,
-#login {
-    color: turquoise;
-}
 
 .navbar-con .house-con {
     position: absolute;
@@ -21,6 +15,12 @@
     width: 60px;
     height: 60px;
     color: rgb(64, 197, 224);
+    opacity: 0.6;
+}
+
+.house-con:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 .navbar-con .collapse-btn-con {
@@ -28,17 +28,38 @@
     justify-content: space-evenly;
 }
 
+#our_zimers,
+#contact,
+#signup,
+#login {
+    color: turquoise;
+}
+
 .collapse-btn-con .nav-btn {
     padding-top: 5dvh;
-    margin: auto;
     background: none;
     border-style: none;
     font-size: x-large;
-    color: black;
     font-weight: 700;
+    opacity: 0.6;
 }
 
 .nav-btn:hover {
-    color: turquoise;
-    scale: 1.2;
+    opacity: 1;
+    animation: under-line 1s ease-out 2 alternate normal;
+    -webkit-animation: under-line 1s ease-out 2 alternate normal;
+}
+
+@keyframes under-line {
+    0% {
+        text-decoration: none;
+    }
+
+    50% {
+        text-decoration: underline;
+    }
+
+    100% {
+        text-decoration: underline;
+    }
 }

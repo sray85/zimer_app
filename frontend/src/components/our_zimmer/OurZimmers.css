@@ -4,6 +4,7 @@
     gap: 15px;
     border-radius: 20px;
     padding: 20px;
+    flex-grow: 1;
 }
 
 .grid-container .grid-item {
@@ -14,11 +15,8 @@
     padding: 10px;
     background: none;
     border-radius: 20px;
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-    background-color: rgba(3, 154, 214, 0.3);
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     color: whitesmoke;
-    width: 400px;
-    height: 500px;
 }
 
 .grid-item .card-img {
@@ -30,5 +28,18 @@
 
 .card-body .card-text {
     font-size: large;
+    font-weight: 600;
+}
+
+.grid-container .grid-item .btn-info {
+    padding: 10px 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.grid-container .grid-item .btn-outline-info {
+    border: 1px solid black;
+    color: black;
+    padding: 10px 30px;
     font-weight: 600;
 }

@@ -1,0 +1,23 @@
+.col-5 {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    color: black;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.col-5 h2 {
+    text-align: center;
+    color: black;
+}
+
+.col-5 p {
+    text-align: right;
+    font-weight: 600;
+}

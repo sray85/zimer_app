@@ -8,13 +8,13 @@ function userSignUp(req, res) {
   const userdata = req.body;
   const userSignUpData = signupSchema;
 
-  const mail = userdata.mail;
+  const email = userdata.mail;
   const passWrd = userdata.password;
 
-  const email = crypto
-    .createHash("sha256")
-    .update(process.env.KEY + mail)
-    .digest("hex");
+  // const email = crypto
+  //   .createHash("sha256")
+  //   .update(process.env.KEY + mail)
+  //   .digest("hex");
 
   const password = crypto
     .createHash("sha256")

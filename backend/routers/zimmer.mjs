@@ -10,5 +10,9 @@ zimmerSignUpRouter.get("/zimmer/zimmerlist", zimmer.DisplayZimmer);
 zimmerSignUpRouter.post("/zimmer/deletezimmer", zimmer.DeleteZimmer);
 zimmerSignUpRouter.post("/zimmer/editzimmer", zimmer.EditZimmer);
 zimmerSignUpRouter.post("/zimmer/resevation", zimmer.AddZimmerResevation);
+zimmerSignUpRouter.get(
+  "/resevation/zimmerResevations",
+  zimmer.ZimmerResevations
+);
 
 export default zimmerSignUpRouter;

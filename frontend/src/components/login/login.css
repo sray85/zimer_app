@@ -6,7 +6,8 @@
   width: fit-content;
   padding: 20px 50px;
   border-radius: 10px;
-  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  z-index: 9999;
 }
 
 .loginInput-container .input-con {
@@ -34,10 +35,11 @@
 }
 
 .login-buttons-container .button {
-  width: 100px;
-  height: 40px;
+  width: 120px;
+  height: 45px;
   font-weight: bold;
   font-weight: bold;
+  border: none;
   border-radius: 20px;
   background-color: turquoise;
 }
